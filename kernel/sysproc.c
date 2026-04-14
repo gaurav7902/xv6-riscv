@@ -7,6 +7,8 @@
 #include "proc.h"
 #include "vm.h"
 
+#define FINISHER_PASS 0x5555
+
 uint64
 sys_exit(void)
 {
@@ -93,6 +95,13 @@ sys_kill(void)
 
   argint(0, &pid);
   return kkill(pid);
+}
+
+uint64
+sys_shutdown(void)
+{
+  *(volatile uint *)VIRT_TEST = FINISHER_PASS;
+  return 0;
 }
 
 // return how many clock tick interrupts have occurred

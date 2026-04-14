@@ -30,6 +30,7 @@ entry("write");
 entry("close");
 entry("kill");
 entry("exec");
+entry("shutdown");
 entry("open");
 entry("mknod");
 entry("unlink");
